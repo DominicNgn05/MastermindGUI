@@ -1,0 +1,10 @@
+
+************* Running the testcases *************
+
+******************************
+* Testcase 'test_01.s' passed
+******************************
+
+
+Testcases passed.  Your environment appears to be working correctly.
+

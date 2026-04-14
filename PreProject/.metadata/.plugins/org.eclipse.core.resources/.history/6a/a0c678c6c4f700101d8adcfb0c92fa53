@@ -1,0 +1,26 @@
+/**
+ * 
+ * @author Khanh Ngoc Nguyen
+ *
+ */
+import java.util.Scanner;
+public class Mastermind {
+
+	public static void main(String[] args) {
+
+		System.out.println("Welcome to Mastermind!");
+		System.out.println("You will guess a 4-color sequence randomly generated from");
+		System.out.println("Red, Orange, Yellow, Green, Blue, Purple!");
+		System.out.println("Type [YES] to begin!\n");
+		String command;
+		Scanner keyboardScanner = new Scanner(System.in);
+		command = keyboardScanner.next();
+		while (!command.equals("YES")) {
+			System.out.println("please try again, type [YES] to continue");
+			command = keyboardScanner.next();
+		}
+		
+		System.out.println("To make your guess, type in the initials of the color without whitespace");
+	}
+
+}

@@ -1,0 +1,16 @@
+/**
+ * 
+ * @author Khanh Ngoc Nguyen
+ *
+ */
+public class Mastermind {
+
+	public static void main(String[] args) {
+
+		System.out.println("Welcome to Mastermind!");
+		System.out.println("You will guess a 4-color sequence randomly generated from");
+		System.out.println("Red, Orange, Yellow, Green, Blue, Purple\n");
+		System.out.println("To make your guess, type in the initials of the color without whitespace!");
+	}
+
+}

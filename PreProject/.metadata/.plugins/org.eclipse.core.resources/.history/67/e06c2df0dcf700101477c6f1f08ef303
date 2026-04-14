@@ -1,0 +1,75 @@
+/**
+ * 
+ * @author Khanh Ngoc Nguyen
+ *
+ */
+import java.util.Scanner;
+public class Mastermind {
+	public static void gameLoop (Scanner keyboardScanner) {
+		GameEngine gameEngine = new GameEngine();
+		System.out.println("To make your guess, type the initials of the color without whitespace");
+		int guessCount=0;
+		boolean winFlag=false;
+		Boolean debug = !(guessCount<10 || winFlag);
+		while ((guessCount<10 || winFlag)) {		//NOR gate
+			String guess = keyboardScanner.next().toUpperCase();
+			if (guess.length()!=4) {
+				System.out.println("Guess too long or short. Remove any whitespace, and make sure you guess 4 color, and retry");
+			}
+			else {
+				int correctPos= gameEngine.checkPos(guess);
+				int correctColor= gameEngine.checkCount(guess)- correctPos;
+				if (correctPos == 4) {
+					winFlag=true;
+				}
+				else {
+					guessCount+=1;
+					
+					System.out.println("# Correct position: " + correctPos);
+					System.out.println("# Correct color but wrong position: "+ correctColor);
+					System.out.println((10-guessCount)+" guess left");
+				}
+			}
+		}
+		if (winFlag) {
+			System.out.print("Congrats, you found the correct sequence after " + guessCount +" tries!");
+		}
+		else {
+			System.out.print("Better luck next time!");
+		}
+	}
+	
+	public static void main(String[] args) {
+
+		System.out.println("Welcome to Mastermind!");
+		System.out.println("You will guess a 4-color sequence randomly generated from");
+		System.out.println("Red, Orange, Yellow, Green, Blue, Purple!");
+		System.out.println("Type [YES] to begin!\n");
+		String command;
+		Scanner keyboardScanner = new Scanner(System.in);
+		command = keyboardScanner.next();
+		while (!command.toUpperCase().equals("YES")) {
+			System.out.println("please try again, type [YES] to continue");
+			command = keyboardScanner.next();
+		}
+		//Game Begins
+		boolean playing = true;
+		while (playing) {
+			gameLoop(keyboardScanner);
+			System.out.println("Go next? [YES/NO]");
+			command = "";
+			while (!command.toUpperCase().equals("YES")) {
+			command = keyboardScanner.next();
+				if (command.toUpperCase().equals("NO")) {
+					System.out.println("Program Exit!");
+					playing=false;
+			}	else {
+				System.out.println("please try again, type [YES/NO] to continue");
+			}
+		}
+		
+		
+	}
+
+}
+}

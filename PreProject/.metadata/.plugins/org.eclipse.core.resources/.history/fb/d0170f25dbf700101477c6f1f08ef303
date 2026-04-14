@@ -1,0 +1,72 @@
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class GameEngine {
+	 HashMap<String, Integer> colorCount;
+	 ArrayList<String> colorPos;
+	private final String[] colors = {"R", "O", "Y", "G", "B", "P"}; 
+	
+	public GameEngine () {
+		HashMap<String, Integer> colorCount = new HashMap<>();
+		ArrayList<String> colorPos = new ArrayList<>();
+		Random rng = new Random();
+		for (int i =0; i<4; i++) {
+			String curr = colors[rng.nextInt(6)];
+			colorPos.add(curr);			//populate color list 
+			if(colorCount.containsKey(curr)) {	// populate color count
+				colorCount.put(curr, colorCount.get(curr) +1);
+			}
+			else {
+				colorCount.put(curr,1);
+			}
+		}
+		this.colorCount = colorCount;
+		this.colorPos = colorPos;
+		
+	}
+	
+	public int checkPos(String guess) {
+		int ret=0;
+		for (int i=0; i<4; i++) {
+			String curr = String.valueOf(guess.charAt(i));
+			if (curr.equals(colorPos.get(i))) {
+				ret+=1;
+			}
+		}
+		return ret;
+	}
+	
+	public int checkCount (String guess) {
+		int ret= 0;
+		HashMap<String, Integer> guessColorCount = new HashMap<>();
+		for (int i=0; i<4; i++) {	// build guess color HashMap
+			String curr = String.valueOf(guess.charAt(i));
+			if (guessColorCount.containsKey(curr)) {
+				guessColorCount.put(curr, guessColorCount.get(curr) +1);
+			}
+			else {
+				guessColorCount.put(curr, 1);
+			}
+		}
+		for (String k: guessColorCount.keySet()) {
+			if (colorCount.containsKey(k)) {
+				ret+=Math.abs(guessColorCount.get(k)-colorCount.get(k));
+			}
+		}
+		return ret;
+	}
+
+	
+	
+	public String toString() {
+		return colorPos.toString();
+	}
+	
+	public static void main(String[] args) {
+		GameEngine test = new GameEngine();
+		System.out.println(test);
+	}
+	
+}
+

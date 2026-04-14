@@ -1,0 +1,14 @@
+/**
+ * 
+ * @author YOUR NAME HERE
+ *
+ */
+public class Mastermind {
+
+	public static void main(String[] args) {
+
+		System.out.println("Welcome to Mastermind!");
+
+	}
+
+}
