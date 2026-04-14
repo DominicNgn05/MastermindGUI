@@ -1,8 +1,0 @@
-Lightning, 100, 0.1
-Lightning, 100, 0.2
-Lightning, 100, 0.3
-Lightning, 100, 0.4
-Lightning, 100, 0.5
-Fire, 800000, 0.6
-Fire, 800000, 0.7
-Fire, 800000, 0.8
